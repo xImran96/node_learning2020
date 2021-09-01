@@ -1,0 +1,59 @@
+{{>home/main-menu}}
+
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-3">
+
+   <h6 class="my-4 text-center">CATEGORIES</h6>
+        <div class="list-group">
+           {{#each categories}}
+               <a href="/category/{{_id}}" style="text-decoration:none; font-weight:500" class="list-group-item bg-dark text-light">{{name}}</a>      
+           {{/each}}
+        </div>
+
+      </div>
+      <!-- /.col-lg-3 -->
+
+      <div class="col-lg-9">
+
+          <br><br><br>
+        <div class="row">
+
+
+        {{#each brands}}
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="/category/{{category}}/brand/{{_id}}"><img alt="{{name}}" class="card-img-top" src="/upload/brands/{{logo}}" alt=""></a>
+            
+            
+            </div>
+          </div>
+          {{/each }}
+
+      
+        </div>
+        <!-- /.row -->
+
+      </div>
+      <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  {{>home/footer}}

@@ -1,0 +1,122 @@
+ <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Products / Update </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <div class="col-xl-12">
+            <div class="col-xl-8 order-xl-1 mx-auto">
+          <div class="card">
+            <div class="card-header">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">Update Product</h3>
+                </div>
+                <div class="col-4 text-right">
+                  <a href="/admin/products" class="btn btn-sm btn-primary">Back</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form method="POST" action="/admin/products/edit/{{product._id}}?_method=PUT">
+                
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-username">Name</label>
+                        <input type="text" name="name" value="{{product.name}}" class="form-control" placeholder="e.g Dell inspiron 5855">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Category</label>
+                         
+                        <select class="form-control" name="category">
+                            <option value="" disabled selected>Choose Category</option>
+                            {{#select product.category}}
+                                {{#each categories}}
+                                    <option value="{{_id}}">{{name}}</option>
+                                {{/each}}
+                            {{/select}}
+                        </select>
+
+                      </div>
+                    </div>
+  
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Brand</label>
+                            <select class="form-control" name="brand">
+                           <option value="" disabled selected>Choose Brand</option>
+                            {{#select product.brand}}
+                                {{#each brands}}
+                                    <option value="{{_id}}">{{name}}</option>
+                                {{/each}}
+                            {{/select}}
+                            </select>
+  
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Specs</label>
+                            <textarea rows="4" class="form-control" name="specs" placeholder="Product Specs">{{product.specs}}</textarea>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Price</label>
+                            <input class="form-control" type="number" name="price" placeholder="{{product.price}}">
+                      </div>
+                    </div>
+                    {{!-- <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Images</label>
+                            <input type="file" name="images" class="form-control" multiple>
+                      </div>
+                    </div> --}}
+
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Status</label>
+                        <select class="form-control" name="status">
+                            {{#select product.status}}
+                            <option value="0">In-Active</option>
+                            <option value="1">Active</option> 
+                            {{/select}}
+                        
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <button class="btn btn-success btn-sm" type="submit">Update</button>
+                    </div>
+                  </div>
+                </div>
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        
+    
+
+    <br>
+    

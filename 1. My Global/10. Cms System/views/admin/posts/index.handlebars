@@ -1,0 +1,84 @@
+ <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Posts</li>
+      </ol>
+      <div class="col-md-12 text-center" style="padding-bottom: 20px;">
+        <a href="/admin/posts/create" class="btn btn-primary mx-auto">Create Post</a>
+        <br>
+      </div>
+      
+      
+      {{#if success_message}}
+
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+           <strong>Note!</strong> {{success_message}}
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
+        </div>
+          
+
+      {{/if}}
+
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> All Posts</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th>Comments</th>
+                  <th>Body</th>
+                  <th>image</th>
+                  <th colspan="2">Action</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                <th>Id</th>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th>Comments</th>
+                  <th>Body</th>
+                  <th>Date</th>
+                  <th>image</th>
+                  <th colspan="2">Action</th>
+                </tr>
+              </tfoot>
+              <tbody>
+               
+                  {{#each posts }}
+                    <tr>
+                      <td>{{_id}}</td>
+                      <td>{{title}}</td>
+                      <td>{{category.name}}</td>
+                      <td>{{status}}</td>
+                      <td>{{allowComments}}</td>
+                      <td>{{body}}</td>
+                      <td>{{GenerateTime date 'MMMM Do YYYY'}}</td>
+                      <td><img class="img-fluid" src="/uploads/{{file}}" style="width: 100px;"></td>
+                      <td>
+                        <a href="/admin/posts/edit/{{_id}}" class="btn btn-success">Edit</a>
+                        </td>
+                        <td>
+                         <form action="/admin/posts/{{_id}}?_method=DELETE" method="POST">
+                              <input type="submit" class="btn btn-danger" value="Delete">
+                         </form>
+                      </td>
+                    </tr>
+                 {{/each }}
+                
+             </tbody>
+            </table>
+          </div>
+        </div>
